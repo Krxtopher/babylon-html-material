@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content 2</title>
+    <style>
+      body {
+        background-image: url("./assets/images/diego-ph-5LOhydOtTKU-unsplash.jpeg");
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        color: #fff;
+        font-family: Helvetica, sans-serif;
+        font-size: 20px;
+      }
+
+      #content {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 8vw;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      #dynamicContent {
+        font-size: 230%;
+        font-weight: bold;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.9.0/html-to-image.js"></script>
+    <script type="module">
+      import { renderElementAsImage } from "./assets/scripts/iframe-capture.js";
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const message = decodeURIComponent(urlParams.get("message"));
+
+      document.getElementById("dynamicContent").innerText = message;
+
+      // Send an image of this page to the parent window so that it can be used as a texture in
+      // the BabylonJS scene.
+      renderElementAsImage(document.body);
+    </script>
+  </head>
+  <body>
+    <div id="content">
+      <p>
+        This HTML page has dynamic content. The value below was passed in via a
+        URL parameter.
+      </p>
+      <p id="dynamicContent"></p>
+    </div>
+  </body>
+</html>

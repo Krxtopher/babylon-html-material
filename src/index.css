@@ -1,0 +1,45 @@
+html, body {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  background-color: #202020;
+  color: #ffffff;
+}
+
+#renderCanvas {
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.uiOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  pointer-events: none;
+}
+
+.uiOverlay>* {
+  pointer-events: auto;
+}
+
+.instructionText {
+  background-color: #ffffff33;
+  border-radius: 6px;
+  padding: 1em 2em;
+  margin: 1.5em 3em;
+  text-align: center;
+  font-size: 16px;
+  pointer-events: none;
+}
