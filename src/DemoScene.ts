@@ -79,9 +79,10 @@ class DemoScene extends Scene {
 
   private setUpInteraction() : void {
     // Trigger our pick handler whenever the user double-clicks on a pickable mesh.
-    this.onPointerObservable.add((info) => {
-      if (info.type === PointerEventTypes.POINTERDOUBLETAP && info.pickInfo) {
-        this.pointerPickHandler(info.pickInfo);
+    window.addEventListener('dblclick', () => {
+      const pickInfo = this.pick(this.pointerX, this.pointerY);
+      if (pickInfo) {
+        this.pointerPickHandler(pickInfo);
       }
     });
   }
